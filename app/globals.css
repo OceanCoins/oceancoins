@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+@keyframes ticker {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Subtle shoreline “water” movement */
+.ocean-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.ocean-bg::before,
+.ocean-bg::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  filter: blur(18px);
+  transform: translate3d(0, 0, 0);
+}
+
+/* Soft moving “water sheet” */
+.ocean-bg::before {
+  background:
+    radial-gradient(60% 40% at 15% 70%, rgba(47, 93, 98, 0.18), transparent 60%),
+    radial-gradient(55% 40% at 75% 65%, rgba(120, 180, 185, 0.16), transparent 62%),
+    radial-gradient(50% 35% at 50% 85%, rgba(255, 255, 255, 0.14), transparent 65%);
+  animation: ocean-drift 22s ease-in-out infinite;
+}
+
+/* A second layer for depth (slower + different direction) */
+.ocean-bg::after {
+  opacity: 0.35;
+  filter: blur(24px);
+  background:
+    radial-gradient(55% 45% at 30% 80%, rgba(246, 239, 230, 0.22), transparent 60%),
+    radial-gradient(50% 40% at 85% 78%, rgba(47, 93, 98, 0.12), transparent 62%);
+  animation: ocean-drift-2 34s ease-in-out infinite;
+}
+
+@keyframes ocean-drift {
+  0%   { transform: translate(-2%, 1%) scale(1.02); }
+  50%  { transform: translate(2%, -1%) scale(1.04); }
+  100% { transform: translate(-2%, 1%) scale(1.02); }
+}
+
+@keyframes ocean-drift-2 {
+  0%   { transform: translate(2%, 0%) scale(1.03); }
+  50%  { transform: translate(-2%, 1.5%) scale(1.06); }
+  100% { transform: translate(2%, 0%) scale(1.03); }
+}
+/* Subtle animated ocean wash */
+.ocean-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+/* two soft layers drifting like tide */
+.ocean-bg::before,
+.ocean-bg::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(60% 40% at 20% 60%, rgba(47, 93, 98, 0.10), transparent 60%),
+    radial-gradient(50% 35% at 70% 45%, rgba(47, 93, 98, 0.08), transparent 60%),
+    radial-gradient(45% 35% at 50% 80%, rgba(46, 120, 132, 0.07), transparent 65%);
+  filter: blur(18px);
+  transform: translate3d(0, 0, 0);
+  opacity: 0.9;
+}
+
+.ocean-bg::before {
+  animation: ocean-drift 22s ease-in-out infinite;
+}
+
+.ocean-bg::after {
+  animation: ocean-drift 28s ease-in-out infinite reverse;
+  opacity: 0.7;
+}
+
+@keyframes ocean-drift {
+  0%   { transform: translate3d(-2%, 1%, 0) scale(1.02); }
+  50%  { transform: translate3d(2%, -1%, 0) scale(1.04); }
+  100% { transform: translate3d(-2%, 1%, 0) scale(1.02); }
+}
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+@keyframes oceanShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ocean-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.2;
+  background: linear-gradient(
+    120deg,
+    #0a1f2c,
+    #0d2a38,
+    #0a1f2c,
+    #09202c
+  );
+  background-size: 200% 200%;
+  animation: oceanShift 20s ease infinite;
+  filter: blur(40px);
+}
