@@ -1,3 +1,4 @@
+import JourneyTimeline from "../../components/JourneyTimeline";
 import { supabase } from "../../../lib/supabase";
 import { addChapter } from "./actions";
 import CoinMap from "../../components/CoinMap";
@@ -341,6 +342,9 @@ const lastChapter = chapters?.[chapters.length - 1];
             <h3>Journey Map</h3>
 
             <CoinMap chapters={chapters ?? []} />
+            <div style={{ marginTop: "2rem" }}>
+  <JourneyTimeline chapters={chapters ?? []} />
+  </div>
           </div>
 
                     <div
@@ -350,25 +354,13 @@ const lastChapter = chapters?.[chapters.length - 1];
               paddingTop: "1rem",
             }}
           >
-            <h3 style={{ marginBottom: "1rem" }}>Journey Timeline</h3>
-
-            {!chapters || chapters.length === 0 ? (
-              <p style={{ opacity: 0.8 }}>No chapters yet.</p>
-            ) : (
-              <div style={{ display: "grid", gap: "1.25rem" }}>
-                {chapters.map((chapter, index) => (
-                  <div key={chapter.id}>
-                    <p>{chapter.location_name}</p>
-                    <p>{chapter.pieces} pieces</p>
-                    {chapter.note && <p>{chapter.note}</p>}
-                  </div>
-                ))}
-              </div>
-            )}
+            
+      
           </div>
         </div>
       )}
     </div>
+    
   </main>
 );
 }
