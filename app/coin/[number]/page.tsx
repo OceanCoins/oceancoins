@@ -194,95 +194,13 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
               <div style={{ fontSize: "2rem" }}>{totalChapters}</div>
             </div>
           </div>
-
-          <div
-            style={{
-              border: "1px solid #333",
-              borderRadius: "10px",
-              padding: "1rem",
-              background: "#0f0f0f",
-              marginBottom: "2rem",
-            }}
-          >
-            <h3
-              style={{
-                marginTop: 0,
-                marginBottom: "1rem",
-                fontSize: "1.15rem",
-              }}
-            >
-              The Journey So Far
-            </h3>
-
-            <div
-              style={{
-                display: "grid",
-                gap: ".5rem",
-                opacity: 0.9,
-                lineHeight: 1.5,
-              }}
-            >
-              <div>
-                <strong>Started in:</strong>{" "}
-                {firstChapter?.location_name ?? "Unknown"}
-              </div>
-
-<div>
-  <strong>Last seen:</strong>{" "}
-  {lastChapter
-    ? `${lastChapter.location_name} on ${new Date(
-        lastChapter.created_at
-      ).toLocaleDateString()}`
-    : "Unknown"}
-</div>
-
-<div>
-  <div style={{ opacity: 0.7, fontSize: ".85rem" }}>
-    Distance traveled
-  </div>
-  <div style={{ fontSize: "1.35rem", marginTop: ".15rem" }}>
-    {totalDistance && totalDistance > 0
-      ? `${Math.round(totalDistance).toLocaleString()} miles`
-      : "Coming soon"}
-  </div>
-</div>
-              <div>
-                <strong>Journey so far:</strong>{" "}
-                {totalChapters} chapters across {uniqueLocations} locations
-              </div>
-
-              <div>
-  <strong>Countries visited:</strong>{" "}
-  {uniqueCountries || 1}
-</div>
-
-<div>
-  <strong>Continents visited:</strong>{" "}
-  {uniqueContinents || 1}
-</div>
-
-<div>
-  <strong>Chapters:</strong>{" "}
-  {totalChapters}
-</div>
-
-<div>
-  <strong>Locations:</strong>{" "}
-  {uniqueLocations}
-</div>
-
-              <div>
-                <strong>Pieces removed:</strong> {totalPieces}
-              </div>
-
-              <div>
-                <strong>First logged:</strong>{" "}
-                {firstChapter
-                  ? new Date(firstChapter.created_at).toLocaleDateString()
-                  : "Unknown"}
-              </div>
-            </div>
-          </div>
+<JourneySummary
+  firstLocation={firstChapter?.location_name}
+  lastLocation={lastChapter?.location_name}
+  totalChapters={totalChapters}
+  totalPieces={totalPieces}
+/>
+          
 
           <form
             action={addChapter}
