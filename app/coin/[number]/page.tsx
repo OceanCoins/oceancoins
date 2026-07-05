@@ -23,10 +23,15 @@ type PageProps = {
   params: Promise<{
     number: string;
   }>;
+  searchParams?: Promise<{
+    success?: string;
+  }>;
 };
 
-export default async function CoinPage({ params }: PageProps) {
+export default async function CoinPage({ params, searchParams }: PageProps) {
   const { number } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : {};
+const showSuccess = resolvedSearchParams.success === "true";
 
   const { data: coin } = await supabase
     .from("coins")
@@ -125,6 +130,24 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
 >
   Ocean Coin #{number}
 </h1>
+{showSuccess && (
+  <div
+    style={{
+      marginTop: "1rem",
+      marginBottom: "2rem",
+      padding: "1rem",
+      borderRadius: "12px",
+      border: "1px solid #2f855a",
+      background: "rgba(47, 133, 90, 0.15)",
+    }}
+  >
+    🐢 Journey continued.
+    <br />
+    Thank you for leaving it better.
+    <br />
+    Pass this coin along when you're ready.
+  </div>
+)}
 
 <p
   style={{

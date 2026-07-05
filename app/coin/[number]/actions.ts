@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { supabase } from "@/lib/supabase";
+import { redirect } from "next/navigation";
 
 type NominatimResult = {
   lat: string;
@@ -82,5 +83,5 @@ export async function addChapter(formData: FormData) {
     throw new Error(error.message);
   }
 
-  revalidatePath(`/coin/${coinNumber}`);
+  redirect(`/coin/${coinNumber}?success=true`);
 }
