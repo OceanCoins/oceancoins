@@ -106,14 +106,14 @@ export default function LogChapterForm({
             fontSize: ".95rem",
           }}
         >
-          Optional note
+          Add your story (optional)
         </div>
 
         <textarea
           id="note"
           name="note"
           rows={4}
-          placeholder="What happened here?"
+          placeholder="Found this coin on a morning walk, picked up a few pieces of trash, and sent it on..."
           style={{
             width: "100%",
             padding: ".75rem",
@@ -137,7 +137,7 @@ export default function LogChapterForm({
           width: "fit-content",
         }}
       >
-        Log Chapter
+        Continue the Journey
       </button>
     </form>
   );
