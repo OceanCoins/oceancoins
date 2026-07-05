@@ -12,9 +12,9 @@ export default function LatestActivity({ chapters }: Props) {
 
   return (
     <section style={{ marginBottom: "2.5rem" }}>
-      <h3 style={{ margin: 0, fontSize: "1.4rem" }}>Latest activity</h3>
+      <h3 style={{ margin: 0, fontSize: "1.4rem" }}>Latest Chapters</h3>
       <p style={{ margin: 0, opacity: 0.7, fontSize: "0.95rem" }}>
-        Recent chapters added to Ocean Coin
+        Each line marks another chapter in the journey.
       </p>
 
       <div style={{ display: "grid", gap: "0.75rem", marginTop: "1rem" }}>
