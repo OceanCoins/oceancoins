@@ -3,6 +3,7 @@ import JourneyTimeline from "../../components/JourneyTimeline";
 import { supabase } from "../../../lib/supabase";
 import { addChapter } from "./actions";
 import CoinMap from "../../components/CoinMap";
+import LogChapterForm from "../../components/LogChapterForm";
 
 function distanceMiles(lat1: number, lon1: number, lat2: number, lon2: number) {
   const R = 3958.8;
@@ -201,147 +202,11 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
   totalPieces={totalPieces}
 />
           
-
-          <form
-            action={addChapter}
-            style={{
-              marginTop: "2rem",
-              display: "grid",
-              gap: ".75rem",
-            }}
-          >
-            <input
-              type="hidden"
-              name="coinId"
-              value={coin.id}
-            />
-
-            <input
-              type="hidden"
-              name="coinNumber"
-              value={String(coin.coin_number)}
-            />
-<div
-  style={{
-    borderTop: "1px solid #222",
-    marginTop: "2rem",
-    paddingTop: "2rem",
-  }}
-></div>
-            <h3 style={{ margin: 0 }}>Continue the Journey</h3>
-
-            <div>
-              <label
-                htmlFor="locationName"
-                style={{
-                  display: "block",
-                  marginBottom: ".35rem",
-                  fontSize: ".95rem",
-                }}
-              >
-                Location
-              </label>
-
-              <input
-                id="locationName"
-                name="locationName"
-                placeholder="Waxhaw, NC"
-                required
-                style={{
-                  width: "100%",
-                  padding: ".75rem",
-                  borderRadius: "6px",
-                  border: "1px solid #333",
-                  background: "#0a0a0a",
-                  color: "white",
-                }}
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="pieces"
-                style={{
-                  display: "block",
-                  marginBottom: ".35rem",
-                  fontSize: ".95rem",
-                }}
-              >
-                Pieces picked up
-              </label>
-
-              <input
-                id="pieces"
-                name="pieces"
-                type="number"
-                min="1"
-                max="10"
-                defaultValue="1"
-                required
-                style={{
-                  width: "100%",
-                  padding: ".75rem",
-                  borderRadius: "6px",
-                  border: "1px solid #333",
-                  background: "#0a0a0a",
-                  color: "white",
-                }}
-              />
-
-              <p
-                style={{
-                  marginTop: ".5rem",
-                  fontSize: ".85rem",
-                  opacity: 0.65,
-                }}
-              >
-                Keep it small and honest.
-              </p>
-            </div>
-
-            <div>
-              <label
-                htmlFor="note"
-                style={{
-                  display: "block",
-                  marginBottom: ".35rem",
-                  fontSize: ".95rem",
-                }}
-              >
-                Optional note
-              </label>
-
-              <textarea
-                id="note"
-                name="note"
-                rows={4}
-                placeholder="What happened here?"
-                style={{
-                  width: "100%",
-                  padding: ".75rem",
-                  borderRadius: "6px",
-                  border: "1px solid #333",
-                  background: "#0a0a0a",
-                  color: "white",
-                }}
-              />
-            </div>
-
-            <button
-              type="submit"
-              style={{
-                padding: ".85rem 1rem",
-                background: "#1d4ed8",
-                color: "white",
-                border: "none",
-                borderRadius: "6px",
-                cursor: "pointer",
-                width: "fit-content",
-              }}
-            >
-              Log Chapter
-            </button>
-          </form>
+<LogChapterForm
+  coinId={coin.id}
+  coinNumber={coin.coin_number}
+/>
+         
 
           <div style={{ marginTop: "2rem" }}>
             <h3>Journey Map</h3>
