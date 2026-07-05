@@ -1,7 +1,22 @@
+import JourneySummary from "../../components/JourneySummary";
 import JourneyTimeline from "../../components/JourneyTimeline";
 import { supabase } from "../../../lib/supabase";
 import { addChapter } from "./actions";
 import CoinMap from "../../components/CoinMap";
+
+function distanceMiles(lat1: number, lon1: number, lat2: number, lon2: number) {
+  const R = 3958.8;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) ** 2;
+
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
 
 type PageProps = {
   params: Promise<{
@@ -33,8 +48,49 @@ export default async function CoinPage({ params }: PageProps) {
     ...new Set(chapters?.map((c) => c.location_name)),
   ].length;
 
+  const uniqueCountries = [
+  ...new Set(
+    chapters
+      ?.map((c) => c.country)
+      .filter(Boolean)
+  ),
+].length;
+
+const uniqueContinents = [
+  ...new Set(
+    chapters
+      ?.map((c) => c.continent)
+      .filter(Boolean)
+  ),
+].length;
+
   const firstChapter = chapters?.[0];
 const lastChapter = chapters?.[chapters.length - 1];
+
+const totalDistance = chapters?.reduce((sum, chapter, index) => {
+  if (index === 0) return 0;
+
+  const prev = chapters[index - 1];
+
+  if (
+    prev.latitude == null ||
+    prev.longitude == null ||
+    chapter.latitude == null ||
+    chapter.longitude == null
+  ) {
+    return sum;
+  }
+
+  return (
+    sum +
+    distanceMiles(
+      Number(prev.latitude),
+      Number(prev.longitude),
+      Number(chapter.latitude),
+      Number(chapter.longitude)
+    )
+  );
+}, 0);
   return (
     <main
   style={{
@@ -179,10 +235,41 @@ const lastChapter = chapters?.[chapters.length - 1];
       ).toLocaleDateString()}`
     : "Unknown"}
 </div>
+
+<div>
+  <div style={{ opacity: 0.7, fontSize: ".85rem" }}>
+    Distance traveled
+  </div>
+  <div style={{ fontSize: "1.35rem", marginTop: ".15rem" }}>
+    {totalDistance && totalDistance > 0
+      ? `${Math.round(totalDistance).toLocaleString()} miles`
+      : "Coming soon"}
+  </div>
+</div>
               <div>
                 <strong>Journey so far:</strong>{" "}
                 {totalChapters} chapters across {uniqueLocations} locations
               </div>
+
+              <div>
+  <strong>Countries visited:</strong>{" "}
+  {uniqueCountries || 1}
+</div>
+
+<div>
+  <strong>Continents visited:</strong>{" "}
+  {uniqueContinents || 1}
+</div>
+
+<div>
+  <strong>Chapters:</strong>{" "}
+  {totalChapters}
+</div>
+
+<div>
+  <strong>Locations:</strong>{" "}
+  {uniqueLocations}
+</div>
 
               <div>
                 <strong>Pieces removed:</strong> {totalPieces}
