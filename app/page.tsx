@@ -1,3 +1,4 @@
+import ActiveCoins from "./components/ActiveCoins";
 import LatestActivity from "./components/LatestActivity";
 import { supabase } from "../lib/supabase";
 import Hero from "./components/Hero";
@@ -52,7 +53,15 @@ export default async function HomePage() {
   chapters={chapters ?? []}
   coins={coins ?? []}
 />
-        <CoinList coins={coins ?? []} chapters={chapters ?? []} />
+        <ActiveCoins
+  coins={coins ?? []}
+  chapters={chapters ?? []}
+/>
+
+<CoinList
+  coins={coins ?? []}
+  chapters={chapters ?? []}
+/>
       </div>
     </main>
   );

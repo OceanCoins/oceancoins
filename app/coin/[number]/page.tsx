@@ -1,3 +1,4 @@
+
 import JourneySummary from "../../components/JourneySummary";
 import JourneyTimeline from "../../components/JourneyTimeline";
 import { supabase } from "../../../lib/supabase";
