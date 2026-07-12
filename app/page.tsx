@@ -48,7 +48,10 @@ export default async function HomePage() {
         />
 
         <GlobalSection chapters={chapters ?? []} />
-<LatestActivity chapters={chapters ?? []} />
+<LatestActivity
+  chapters={chapters ?? []}
+  coins={coins ?? []}
+/>
         <CoinList coins={coins ?? []} chapters={chapters ?? []} />
       </div>
     </main>
