@@ -21,7 +21,7 @@ export default function JourneySummary({
         background: "#0f0f0f",
       }}
     >
-      <h3>The Journey So Far</h3>
+      <h3>My Journey So Far</h3>
 
       <p>
         <strong>Started in:</strong>{" "}
@@ -44,7 +44,7 @@ export default function JourneySummary({
       </p>
 
       <p style={{ opacity: 0.6 }}>
-        Still traveling.
+        I am still moving from hand to hand.
       </p>
     </div>
   );
