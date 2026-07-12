@@ -39,7 +39,7 @@ export default function JourneySummary({
       </p>
 
       <p>
-        <strong>Pieces removed:</strong>{" "}
+        <strong>Pieces collected:</strong>{" "}
         {totalPieces}
       </p>
 

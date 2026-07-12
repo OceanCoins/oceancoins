@@ -129,8 +129,20 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
     lineHeight: 1.1,
   }}
 >
-  Ocean Coin #{number}
+  Coin #{String(number).padStart(4, "0")}
 </h1>
+<p
+  style={{
+    marginTop: ".75rem",
+    marginBottom: 0,
+    maxWidth: "34rem",
+    fontSize: "1rem",
+    lineHeight: 1.6,
+    opacity: 0.72,
+  }}
+>
+  A small reminder, passed from hand to hand.
+</p>
 {showSuccess && (
   <div
     style={{
@@ -157,7 +169,8 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
     fontSize: "1rem",
   }}
 >
-  {totalPieces} pieces removed across {totalChapters} chapters
+  {totalPieces} piece{totalPieces !== 1 ? "s" : ""} collected across{" "}
+{totalChapters} chapter{totalChapters !== 1 ? "s" : ""}
 </p>
 
       {coin && (
@@ -197,7 +210,7 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
               }}
             >
               <div style={{ opacity: 0.7, marginBottom: ".35rem" }}>
-                Pieces removed
+                Pieces collected
               </div>
 
               <div style={{ fontSize: "2rem" }}>{totalPieces}</div>
@@ -213,7 +226,7 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
               }}
             >
               <div style={{ opacity: 0.7, marginBottom: ".35rem" }}>
-                Chapters logged
+                Chapters
               </div>
 
               <div style={{ fontSize: "2rem" }}>{totalChapters}</div>
