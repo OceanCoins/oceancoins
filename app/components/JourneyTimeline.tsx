@@ -9,7 +9,7 @@ export default function JourneyTimeline({ chapters }: Props) {
 
   return (
     <div style={{ marginTop: "2rem" }}>
-      <h3 style={{ marginBottom: "1rem" }}>Journey Timeline</h3>
+      <h3 style={{ marginBottom: "1rem" }}>My Journey</h3>
 
       <div style={{ display: "grid", gap: "1rem" }}>
         {chapters.map((chapter, index) => (
