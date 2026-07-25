@@ -1,4 +1,8 @@
-
+import JourneyMarkers from "../../components/JourneyMarkers"
+import {
+  calculateJourneyMarkers,
+  calculateTotalJourneyMiles,
+} from "@/lib/journeyMarkers"
 import JourneySummary from "../../components/JourneySummary";
 import JourneyTimeline from "../../components/JourneyTimeline";
 import { supabase } from "../../../lib/supabase";
@@ -45,6 +49,8 @@ const showSuccess = resolvedSearchParams.success === "true";
     .select("*")
     .eq("coin_id", coin?.id)
     .order("created_at", { ascending: true });
+    const totalJourneyMiles = calculateTotalJourneyMiles(chapters ?? [])
+const journeyMarkers = calculateJourneyMarkers(chapters ?? [])
 
   const totalPieces =
     chapters?.reduce((sum, chapter) => sum + (chapter.pieces || 0), 0) || 0;
@@ -238,6 +244,8 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
   totalChapters={totalChapters}
   totalPieces={totalPieces}
 />
+
+<JourneyMarkers markers={journeyMarkers} />
           
 <LogChapterForm
   coinId={coin.id}
