@@ -86,7 +86,7 @@ export default function CoinMapInner({ chapters }: CoinMapProps) {
             <Popup>
               <strong>{chapter.location_name}</strong>
               <br />
-              Pieces picked up: {chapter.pieces}
+              Pieces collected: {chapter.pieces}
               {chapter.note ? (
                 <>
                   <br />

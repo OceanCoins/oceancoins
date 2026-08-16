@@ -92,7 +92,7 @@ export default function GlobalMapInner({ chapters }: GlobalMapInnerProps) {
             <Popup>
               <strong>{chapter.location_name}</strong>
               <br />
-              Pieces picked up: {chapter.pieces}
+              Pieces collected: {chapter.pieces}
               {chapter.note ? (
                 <>
                   <br />

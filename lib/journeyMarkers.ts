@@ -31,7 +31,7 @@ const MARKER_DEFINITIONS: MarkerDefinition[] = [
   {
     id: "crossed-united-states",
     thresholdMiles: 2_800,
-    title: "This coin traveled across the United States in distance.",
+    title: "This coin traveled the width of the United States.",
   },
   {
     id: "circled-earth",

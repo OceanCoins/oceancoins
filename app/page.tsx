@@ -1,10 +1,11 @@
+export const dynamic = "force-dynamic";
 import ActiveCoins from "./components/ActiveCoins";
 import LatestActivity from "./components/LatestActivity";
 import { supabase } from "../lib/supabase";
 import Hero from "./components/Hero";
 import Stats from "./components/Stats";
 import GlobalSection from "./components/GlobalSection";
-import CoinList from "./components/CoinList";
+
 
 export default async function HomePage() {
   const { data: coins } = await supabase
@@ -58,10 +59,7 @@ export default async function HomePage() {
   chapters={chapters ?? []}
 />
 
-<CoinList
-  coins={coins ?? []}
-  chapters={chapters ?? []}
-/>
+
       </div>
     </main>
   );

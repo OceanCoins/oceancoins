@@ -63,7 +63,7 @@ export async function addChapter(formData: FormData) {
   const pieces = Number(piecesRaw);
 
   if (!Number.isFinite(pieces) || pieces < 1 || pieces > 10) {
-    throw new Error("Pieces picked up must be between 1 and 10.");
+    throw new Error("Pieces collected must be between 1 and 10.");
   }
 
   const note = noteRaw.length ? noteRaw : null;

@@ -188,14 +188,16 @@ const totalDistance = chapters?.reduce((sum, chapter, index) => {
             background: "#0a0a0a",
           }}
         >
-          <p>
-            <strong>Coin Number:</strong> {coin.coin_number}
-          </p>
-
-          <p>
-            <strong>Created:</strong>{" "}
-            {new Date(coin.created_at).toLocaleString()}
-          </p>
+         <p>
+  <strong>Started:</strong>{" "}
+  {firstChapter
+  ? new Date(firstChapter.created_at).toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+      })
+  : "Not started yet"}
+</p>
 
           <div
             style={{

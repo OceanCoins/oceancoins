@@ -48,7 +48,7 @@ export default function Hero({ totalPieces }: Props) {
     fontSize: "1rem",
   }}
 >
-    <strong>{totalPieces.toLocaleString()}</strong> pieces removed worldwide
+    <strong>{totalPieces.toLocaleString()}</strong> pieces collected worldwide
 </div>
 
       <p

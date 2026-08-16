@@ -94,7 +94,7 @@ export default function LatestActivity({ chapters, coins }: Props) {
                 }}
               >
                 {chapter.pieces} piece
-                {chapter.pieces !== 1 ? "s" : ""} removed
+                {chapter.pieces !== 1 ? "s" : ""} collected
               </div>
 
               {chapter.note && (

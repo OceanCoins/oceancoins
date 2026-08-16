@@ -66,7 +66,7 @@ export default function LogChapterForm({
             fontSize: ".95rem",
           }}
         >
-          Pieces picked up
+          Pieces Collected
         </div>
 
         <input

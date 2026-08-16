@@ -28,7 +28,7 @@ export default function Stats({
       }}
     >
       <div style={boxStyle}>
-        <div style={{ opacity: 0.7 }}>Pieces removed</div>
+        <div style={{ opacity: 0.7 }}>Pieces collected</div>
         <div style={{ fontSize: "1.5rem" }}>{totalPieces}</div>
       </div>
 

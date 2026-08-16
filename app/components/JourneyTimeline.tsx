@@ -77,7 +77,7 @@ export default function JourneyTimeline({ chapters }: Props) {
               </div>
 
               <div style={{ marginTop: ".75rem" }}>
-                {chapter.pieces} piece{chapter.pieces !== 1 ? "s" : ""} removed
+                {chapter.pieces} piece{chapter.pieces !== 1 ? "s" : ""} collected
               </div>
 
               {chapter.note && (

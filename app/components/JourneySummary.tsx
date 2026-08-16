@@ -21,7 +21,7 @@ export default function JourneySummary({
         background: "#0f0f0f",
       }}
     >
-      <h3>My Journey So Far</h3>
+      <h3>Journey So Far</h3>
 
       <p>
         <strong>Started in:</strong>{" "}
@@ -35,7 +35,7 @@ export default function JourneySummary({
 
       <p>
         <strong>Journey:</strong>{" "}
-        {totalChapters} chapters
+{totalChapters} {totalChapters === 1 ? "chapter" : "chapters"}
       </p>
 
       <p>
